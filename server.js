@@ -4,6 +4,7 @@ var mongoose = require('mongoose/');
 var config = require('./config');
 var Message = require('./model/message');
 var bodyParser  = require('body-parser');
+var request = require('request');
 
 
 var app = express();
@@ -34,6 +35,17 @@ function postMessage(req, res, next) {
     res.jsonp(req.body);
   });
 }
+
+
+app.use('/weather', function(req, res) {
+  var url = "http://api.openweathermap.org/data/2.5/weather";
+  var qs = {
+    lat: 68.651751,
+    lon: 15.524236,
+    appid: config.creds.openweather_api_key,
+    units: "metric"}
+  req.pipe(request({url: url, qs:qs })).pipe(res);
+});
 
 // Set up our routes and start the server
 app.get('/messages', getMessages);

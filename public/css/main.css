@@ -1,0 +1,45 @@
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+.inputContainer {
+  margin-top: 20px;
+  margin-left: 17%;
+  margin-right: 17%;
+}
+
+@font-face {
+    font-family: thin_cond;
+    src: url("../font/PF_Din_Text_Cond_Pro_Thin.ttf");
+}
+
+.banner {
+  padding-left: 17%;
+  padding-right: 17%;
+  height: 140px;
+  background-color: rgb(83, 97, 114);
+  font-family: thin_cond;
+}
+
+.center-align{
+  padding-top: 5px;
+  font-size: 18px;
+  text-align: center;
+  color: white;
+}
+
+.bannerImg{
+  height: inherit;
+}
+
+.icon{
+  width: 70px;
+  height: 70px;
+}
+
+.circleContainer{
+  margin-left: 10%;
+  padding-top: 25px;
+}
