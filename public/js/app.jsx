@@ -18,7 +18,6 @@ var Banner = React.createClass({
   },
   getWeather: function() {
     var weather = this.state.weather.toLowerCase()
-    console.log(weather)
     if (weather == 'rain'){
       return ["rain.png","regn"]
     }
@@ -56,30 +55,29 @@ var Banner = React.createClass({
 
   render: function() {
     if (this.state.loading) {
-      return <div className="banner">loading ...</div>;
+      return <div className="banner">loading ...</div>
     } else {
-      return (
-      <div className="banner">
-        <img className="pull-left bannerImg" src="img/logo.png"></img>
-        <div className="circleContainer pull-left">
-          <img className="icon" src={"img/" + this.getWeather()[0]}></img>
-          <div className="center-align">{this.getWeather()[1]}</div>
+        return (
+        <div>
+          <div className="circleContainer pull-left">
+            <img className="icon" src={"img/" + this.getWeather()[0]}></img>
+            <div className="center-align">{this.getWeather()[1]}</div>
+          </div>
+          <div className="circleContainer pull-left">
+            <img className="icon" src="img/temp.png"></img>
+            <div className="center-align">{this.state.temp}°C</div>
+          </div>
+          <div className="circleContainer pull-left">
+            <img className="icon" src="img/wind.png"></img>
+            <div className="center-align">{this.state.wind}m/s</div>
+          </div>
+          <div className="circleContainer pull-left">
+            <img className="icon" src="img/visit.png"></img>
+            <div className="center-align">visit</div>
+          </div>
         </div>
-        <div className="circleContainer pull-left">
-          <img className="icon" src="img/temp.png"></img>
-          <div className="center-align">{this.state.temp}°C</div>
-        </div>
-        <div className="circleContainer pull-left">
-          <img className="icon" src="img/wind.png"></img>
-          <div className="center-align">{this.state.wind}m/s</div>
-        </div>
-        <div className="circleContainer pull-left">
-          <img className="icon" src="img/visit.png"></img>
-          <div className="center-align">visit</div>
-        </div>
-      </div>
-    );}
-
+      );
+    }
   }
 });
 
@@ -140,10 +138,13 @@ var TweetBox = React.createClass({
   }
 });
 
+
 ReactDOM.render(
-  <div>
-    <Banner />
-    <TweetBox />
-  </div>,
+  <Banner />,
+  document.getElementById("info")
+);
+
+ReactDOM.render(
+  <TweetBox />,
   document.getElementById("container")
 );
