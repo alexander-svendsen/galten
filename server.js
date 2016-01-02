@@ -1,7 +1,6 @@
 //require modules
 var express = require('express');
 var mongoose = require('mongoose/');
-var config = require('./config');
 var Message = require('./model/message');
 var bodyParser  = require('body-parser');
 var request = require('request');
@@ -12,7 +11,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
 //setup mongoose
-db = mongoose.connect(config.creds.mongoose_auth_local)
+db = mongoose.connect(process.env.mongoose_auth)
 
 
 // This function is responsible for returning all entries for the Message model
@@ -42,7 +41,7 @@ app.use('/weather', function(req, res) {
   var qs = {
     lat: 68.651751,
     lon: 15.524236,
-    appid: config.creds.openweather_api_key,
+    appid: process.env.openweather_api_key,
     units: "metric"}
   req.pipe(request({url: url, qs:qs })).pipe(res);
 });
