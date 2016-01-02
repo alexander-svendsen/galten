@@ -50,5 +50,5 @@ app.use('/weather', function(req, res) {
 app.get('/messages', getMessages);
 app.post('/messages', postMessage);
 
-app.listen(.listen(process.env.PORT || 8080));
-console.log("Server up and running on port " + .listen(process.env.PORT || 8080));
+app.listen(process.env.PORT || 8080);
+console.log("Server up and running on port " + (process.env.PORT || 8080));
